@@ -43,8 +43,39 @@ Route::view('/form3','welcome');
 // });
 Route::get('about',[SecondController::class,'First']);
 Route::get('about/second',[SecondController::class,'Second']);
+Route::redirect('/about','/contact/info/mca');
+Route::get('person-age/{age}',function($age){
+    return "Person Age-".$age;
+});
+Route::get('person-details/{age}/{name}/{id}',function($age,$name,$id){
+    return "Person Details Age-".$age."Name-".$name."Id-".$id;
+});
 
+Route::get('person-detail/age/{age}/name/{name}/id/{id}/',function($age,$name,$id){
+    return "Person Details Age-".$age."Name-".$name."Id-".$id;
+});
 
+Route::get('age/{age?}',function($age=null){
+    
+    if($age){
+        return "Person Age-".$age;
+    }else{
+        return "No person age define";
+    }
+});
+
+Route::get('person-age/person1/{age}',function($age){
+    return "Person Age-".$age;
+})->whereNumber('age');
+Route::get('person-age/person2/{age}',function($age){
+    return "Person Age-".$age;
+})->whereAlpha('age');
+Route::get('person-age/person3/{age}',function($age){
+    return "Person Age-".$age;
+})->whereAlphaNumeric('age');
+Route::get('category/{category}',function($cat){
+    return "Category-".$cat;
+})->whereIn('category',['laptop','desktop','mobile']);
 /*
 1.Project Run
 php artisan serve

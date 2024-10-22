@@ -12,4 +12,13 @@ class SecondController extends Controller
     public function Second(){
         return view(view: 'contact.info.contact-info');
     }
+    public function Function1(){
+        return "This is function 1";
+    }
+    public function Function2(){
+        return "This is function 2";
+    }
+    public function Function3(){
+        return "This is function 3";
+    }
 }

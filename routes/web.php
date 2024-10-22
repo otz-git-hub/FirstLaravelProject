@@ -75,11 +75,33 @@ Route::get('person-age/person3/{age}',function($age){
 Route::get('category/{category}',function($cat){
     return "Category-".$cat;
 })->whereIn('category',['laptop','desktop','mobile']);
+
+// Grouping Route
+Route::controller(SecondController::class)->group(function () {
+    Route::get('/orders/{id}', 'Function1');
+    Route::get('/orders', 'Function2');
+    Route::get('/index', 'Function3');
+});
+//prefix routing
+Route::prefix('user')->controller(SecondController::class)->group(function () {
+    Route::get('/orders/{id}', 'Function1');
+    Route::get('/orders', 'Function2');
+    Route::get('/index', 'Function3');
+});
+Route::prefix('website')->group(function () {
+    Route::get('contact-info',function(){
+        return view(view: 'contact.info.contact-info');
+    });
+    Route::view('/form3','welcome')->name('my-form');
+});  
+
 /*
 1.Project Run
 php artisan serve
 2.Creation of Controller
 php artisan make:controller FirstController(ControllerName)
 use App\Http\Controllers\SecondController;
+3. Route List
+php artisan route:list
 
 */

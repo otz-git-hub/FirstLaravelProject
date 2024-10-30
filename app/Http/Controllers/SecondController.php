@@ -19,6 +19,6 @@ class SecondController extends Controller
         return "This is function 2";
     }
     public function Function3(){
-        return "This is function 3";
+        return "This is function 4";
     }
 }

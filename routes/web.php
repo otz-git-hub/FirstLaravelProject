@@ -2,13 +2,14 @@
 
 use App\Http\Controllers\FirstController;
 use App\Http\Controllers\SecondController;
+use App\Http\Controllers\EmployeeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome'); 
 });
 
-Route::get('/index',function(){
+Route::get('/index-page',function(){
     return view('index');
 });
 
@@ -95,6 +96,15 @@ Route::prefix('website')->group(function () {
     Route::view('/form3','welcome')->name('my-form');
 });  
 
+
+
+
+Route::get('/employees', [EmployeeController::class, 'index'])->name('employees.index');
+Route::post('/employees', [EmployeeController::class, 'store'])->name('employees.store');
+Route::put('/employees/{id}', [EmployeeController::class, 'update'])->name('employees.update');
+Route::delete('/employees/{id}', [EmployeeController::class, 'destroy'])->name('employees.destroy');
+
+Route::view('/test','test');
 /*
 1.Project Run
 php artisan serve
@@ -105,3 +115,4 @@ use App\Http\Controllers\SecondController;
 php artisan route:list
 
 */
+
